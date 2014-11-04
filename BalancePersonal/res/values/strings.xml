@@ -3,5 +3,7 @@
 
     <string name="app_name">BalancePersonal</string>
     <string name="hello_world">Hello world!</string>
+    <string name="internet_error_info">No es posible conectarse \n con el servicio en este momento, \n revise su conección a internet.</string>
+    <string name="consumo_error_info">No es posible conectarse \n con el servicio en este momento, \n  intente mas tarde.</string>
 
 </resources>
