@@ -5,5 +5,12 @@
     <string name="hello_world">Hello world!</string>
     <string name="internet_error_info">No es posible conectarse \n con el servicio en este momento, \n revise su conección a internet.</string>
     <string name="consumo_error_info">No es posible conectarse \n con el servicio en este momento, \n  intente mas tarde.</string>
+    <string name="guardar">Guardar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="nro_de_cuenta_">Nro de cuenta:</string>
+    <string name="nombre_de_banco_">Nombre de banco:</string>
+    <string name="introducir_nro_de_cuenta">Introducir nro de cuenta</string>
+    <string name="dinero_">Dinero:</string>
+    <string name="introducir_saldo_de_cuenta">Introducir saldo de cuenta</string>
 
 </resources>

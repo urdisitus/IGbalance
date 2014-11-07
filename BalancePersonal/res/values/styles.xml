@@ -1,8 +1,31 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
     <style name="AppBaseTheme" parent="android:Theme.Light"></style>
 
     <style name="AppTheme" parent="AppBaseTheme">
         <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="style_btn_cuadrado">
+        <item name="android:background">@drawable/selector_btn_cuadrado</item>
+    </style>
+
+    <style name="style_btn_dialogo_aceptar">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/selector_btn_dialogo_aceptar</item>
+    </style>
+
+    <style name="style_btn_dialogo_cancel">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/selector_btn_dialogo_cancelar</item>
+    </style>
+
+    <style name="style_txt">
+        <item name="android:background">@drawable/shape_txt</item>
+    </style>
+
+    <style name="style_lbl_blanco">
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
 </resources>

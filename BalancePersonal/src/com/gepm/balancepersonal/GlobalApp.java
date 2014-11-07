@@ -15,13 +15,12 @@ public class GlobalApp extends Application {
 		super.onCreate();
 		miApp = this;
 		regular = Typeface.createFromAsset(getAssets(),
-				"fonts/HelveticaNeue.ttf");
-		bold = Typeface.createFromAsset(getAssets(),
-				"fonts/HelveticaNeueBold.ttf");
+				"fonts/Comfortaa_Regular.ttf");
+		bold = Typeface.createFromAsset(getAssets(), "fonts/Comfortaa_Bold.ttf");
 		italic = Typeface.createFromAsset(getAssets(),
-				"fonts/HelveticaNeueItalic.ttf");
+				"fonts/Comfortaa_Regular.ttf");
 		ultraLigth = Typeface.createFromAsset(getAssets(),
-				"fonts/HelveticaNeueUltraLight.ttf");
+				"fonts/Comfortaa_Regular.ttf");
 	}
 
 	public static GlobalApp getInstance() {

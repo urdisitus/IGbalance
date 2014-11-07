@@ -3,6 +3,7 @@ package com.gepm.balancepersonal.base;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.Window;
 
@@ -76,8 +77,8 @@ public abstract class BaseActivity extends FragmentActivity implements
 		b.putParcelable(DialogoConfirmacion.key_object, object);
 		actualDialogo.setArguments(b);
 		actualDialogo.setListener(listener);
-		// actualDialogo.setStyle(DialogFragment.STYLE_NO_FRAME,
-		// R.style.Dialog_No_Border);
+		actualDialogo.setStyle(DialogFragment.STYLE_NO_FRAME,
+				R.style.Dialog_No_Border);
 		actualDialogo.show(getSupportFragmentManager(), TAG);
 		return actualDialogo;
 	}
