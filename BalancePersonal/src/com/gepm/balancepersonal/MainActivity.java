@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.TextView;
 
 import com.gepm.balancepersonal.adaptadores.OrigenFinancieroAdapter;
 import com.gepm.balancepersonal.base.BaseActivity;
@@ -34,6 +35,7 @@ public class MainActivity extends BaseActivity implements OnChildClickListener,
 	private ResideMenuItem itemIngreso;
 	private ResideMenuItem itemGasto;
 	private ResideMenuItem itemAgregarCuenta;
+	private TextView lblBalance;
 
 	@Override
 	public boolean onChildClick(ExpandableListView parent, View v,
@@ -58,6 +60,18 @@ public class MainActivity extends BaseActivity implements OnChildClickListener,
 		origenesFinancieros.clear();
 		origenesFinancieros.add(new Efectivo(this));
 		origenesFinancieros.addAll(cuentaBL.obtenerCuentas());
+		double balance = 0;
+		for (OrigenFinanciero or : origenesFinancieros) {
+			balance += or.getSaldo();
+		}
+		lblBalance.setText(balance + " Bs.");
+		if (balance > 0) {
+			lblBalance.setTextColor(getResources().getColor(
+					android.R.color.holo_green_light));
+		} else {
+			lblBalance.setTextColor(getResources().getColor(
+					android.R.color.holo_red_light));
+		}
 		cuentaAdapter.notifyDataSetChanged();
 	}
 
@@ -67,6 +81,9 @@ public class MainActivity extends BaseActivity implements OnChildClickListener,
 		expandableListView = (ExpandableListView) findViewById(R.id.exp_cuentas);
 		expandableListView.setAdapter(cuentaAdapter);
 		expandableListView.setOnChildClickListener(this);
+		TextView tltBalance = (TextView) findViewById(R.id.tlt_balance_main_activity);
+		lblBalance = (TextView) findViewById(R.id.lbl_balance_main_activity);
+		LetraUtils.setRegularHelveticaNeue(lblBalance, tltBalance);
 	}
 
 	@Override
@@ -88,10 +105,8 @@ public class MainActivity extends BaseActivity implements OnChildClickListener,
 		// create menu items;
 		itemPrincipal = new ResideMenuItem(this, R.drawable.home, "Principal");
 		itemMevimientosMes = new ResideMenuItem(this, R.drawable.stat, "Mes");
-		itemAgregarCuenta = new ResideMenuItem(this, R.drawable.add,
-				"Cuenta");
-		itemIngreso = new ResideMenuItem(this, R.drawable.download,
-				"Ingreso");
+		itemAgregarCuenta = new ResideMenuItem(this, R.drawable.add, "Cuenta");
+		itemIngreso = new ResideMenuItem(this, R.drawable.download, "Ingreso");
 		itemGasto = new ResideMenuItem(this, R.drawable.upload, "Gasto");
 
 		LetraUtils.setRegularHelveticaNeue(itemPrincipal.getTv_title(),

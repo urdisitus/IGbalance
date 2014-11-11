@@ -12,5 +12,10 @@
     <string name="introducir_nro_de_cuenta">Introducir nro de cuenta</string>
     <string name="dinero_">Dinero:</string>
     <string name="introducir_saldo_de_cuenta">Introducir saldo de cuenta</string>
+    <string name="monto_">Monto:</string>
+    <string name="fuente_financiera_">Fuente:</string>
+    <string name="fecha_">Fecha:</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="categoria_">Categoria:</string>
 
 </resources>

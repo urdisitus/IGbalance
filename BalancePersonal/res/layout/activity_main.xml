@@ -23,16 +23,30 @@
             android:src="@drawable/menu" />
 
         <TextView
-            android:id="@+id/lbl_titulo_base_activity_con_barra"
-            android:layout_width="wrap_content"
+            android:id="@+id/tlt_balance_main_activity"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="4.10"
+            android:layout_weight="3.10"
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
-            android:paddingRight="15dp"
-            android:text="Cliente"
+            android:paddingRight="15dp"            
+            android:text="Balance"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/lbl_balance_main_activity"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="center_vertical|right"
+            android:paddingLeft="10dp"
+            android:paddingRight="15dp"
+            android:text="Balance"
+            
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white" />
+
     </LinearLayout>
 
     <LinearLayout
