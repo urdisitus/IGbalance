@@ -1,9 +1,9 @@
 package com.gepm.balancepersonal.fragment;
 
-import com.ernesto.perez.balancepersonal.entidades.Banco;
-
 import android.os.Bundle;
 import android.view.View;
+
+import com.gepm.balancepersonal.negocio.entidades.Banco;
 
 public class EditarCuentaFragment extends CuentaFragment {
 

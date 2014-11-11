@@ -2,9 +2,6 @@ package com.gepm.balancepersonal.adaptadores;
 
 import java.util.List;
 
-import com.ernesto.perez.balancepersonal.entidades.Banco;
-import com.gepm.balancepersonal.R;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.gepm.balancepersonal.R;
+import com.gepm.balancepersonal.base.LetraUtils;
+import com.gepm.balancepersonal.negocio.entidades.Banco;
 
 public class BancoAdapter extends ArrayAdapter<Banco> {
 
@@ -46,12 +47,14 @@ public class BancoAdapter extends ArrayAdapter<Banco> {
 					.findViewById(R.id.img_logo_banco);
 			holder.lblNombre = (TextView) convertView
 					.findViewById(R.id.lbl_nombre_banco);
+			LetraUtils.setRegularHelveticaNeue(holder.lblNombre);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
 		Banco b = getItem(position);
 		holder.lblNombre.setText(b.getNombre());
+		holder.imgLogo.setImageResource((int)b.getIcResImagen());
 		return convertView;
 	}
 }

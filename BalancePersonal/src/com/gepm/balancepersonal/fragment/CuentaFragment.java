@@ -1,7 +1,6 @@
 package com.gepm.balancepersonal.fragment;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import android.os.Bundle;
@@ -11,12 +10,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import com.ernesto.perez.balancepersonal.entidades.Banco;
+
 import com.gepm.balancepersonal.R;
 import com.gepm.balancepersonal.adaptadores.BancoAdapter;
 import com.gepm.balancepersonal.base.BaseFragment;
 import com.gepm.balancepersonal.base.LetraUtils;
 import com.gepm.balancepersonal.base.listeners.IBaseActivity;
+import com.gepm.balancepersonal.negocio.BancoBL;
+import com.gepm.balancepersonal.negocio.CuentaBL;
+import com.gepm.balancepersonal.negocio.entidades.Banco;
 
 public abstract class CuentaFragment extends BaseFragment<IBaseActivity>
 		implements OnClickListener {
@@ -24,6 +26,9 @@ public abstract class CuentaFragment extends BaseFragment<IBaseActivity>
 	protected EditText txtNro, txtSaldo;
 	protected Spinner spnBanco;
 	private BancoAdapter adapter;
+	private List<Banco> bancos = new ArrayList<Banco>();
+	private BancoBL bancoBL;
+	protected CuentaBL cuentaBL;
 
 	protected abstract void onGuardarClick(Banco banco, String nroCuenta,
 			double saldo);
@@ -32,18 +37,17 @@ public abstract class CuentaFragment extends BaseFragment<IBaseActivity>
 
 	@Override
 	protected void inicializarVariables(Bundle savedInstanceState) {
-		List<Banco> list = new ArrayList<Banco>();
-		list.add(new Banco(0L, "Banco Bisa", 0, Calendar.getInstance()
-				.getTime(), null));
-		list.add(new Banco(0L, "Banco Central de Bolivia", 0, Calendar
-				.getInstance().getTime(), null));
-		list.add(new Banco(0L, "Banco Económico", 0, Calendar.getInstance()
-				.getTime(), null));
-		list.add(new Banco(0L, "Banco Ganadero", 0, Calendar.getInstance()
-				.getTime(), null));
-		list.add(new Banco(0L, "Banco Mercantil Santa Cruz", 0, Calendar
-				.getInstance().getTime(), null));
-		adapter = new BancoAdapter(getActivity(), list);
+		bancoBL = new BancoBL(getActivity());
+		cuentaBL = new CuentaBL(getActivity());
+		adapter = new BancoAdapter(getActivity(), bancos);
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		bancos.clear();
+		bancos.addAll(bancoBL.obtenerBancos());
+		adapter.notifyDataSetChanged();
 	}
 
 	@Override
@@ -77,10 +81,10 @@ public abstract class CuentaFragment extends BaseFragment<IBaseActivity>
 		case R.id.btn_guardar:
 			String mensaje = validar();
 			if (mensaje == null) {
-				onGuardarClick(
-						null,
-						txtNro.getText().toString().trim(),
-						Double.parseDouble(txtSaldo.getText().toString().trim()));
+				onGuardarClick(adapter.getItem(spnBanco
+						.getSelectedItemPosition()), txtNro.getText()
+						.toString().trim(), Double.parseDouble(txtSaldo
+						.getText().toString().trim()));
 			} else {
 				showAlert(null, "Aviso", mensaje, "btnGuardar");
 			}

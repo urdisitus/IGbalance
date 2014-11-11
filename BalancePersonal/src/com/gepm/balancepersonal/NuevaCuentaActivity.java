@@ -1,8 +1,8 @@
 package com.gepm.balancepersonal;
 
 import android.support.v4.app.Fragment;
+
 import com.gepm.balancepersonal.base.BaseActivityConBarra;
-import com.gepm.balancepersonal.fragment.CuentaFragment;
 import com.gepm.balancepersonal.fragment.NuevaCuentaFragment;
 
 public class NuevaCuentaActivity extends BaseActivityConBarra {
